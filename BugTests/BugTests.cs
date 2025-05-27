@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using BugPro;
 using Stateless;
 
 namespace BugTests {

@@ -13,7 +13,7 @@ public class Bug {
 
         sm.Configure(State.Assigned)
             .Permit(Trigger.Close, State.Closed)
-            .Permit(Trigger.Defer, State.Deferred)
+            .Permit(Trigger.Defer, State.Defered)
             .Permit(Trigger.Resolve, State.Resolved)
             .Ignore(Trigger.Assign);
 
@@ -21,12 +21,13 @@ public class Bug {
             .Permit(Trigger.Close, State.Closed);
 
         sm.Configure(State.Closed)
-            .Permit(Trigger.Reopen, State.Reopened);
+            .Permit(Trigger.Reopen, State.Reopened)
+            .Permit(Trigger.Assign, State.Assigned);
 
         sm.Configure(State.Reopened)
             .Permit(Trigger.Assign, State.Assigned);
 
-        sm.Configure(State.Deferred)
+        sm.Configure(State.Defered)
             .Permit(Trigger.Assign, State.Assigned);
    }
    public void Close() {
